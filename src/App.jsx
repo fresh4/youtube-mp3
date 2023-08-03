@@ -71,15 +71,10 @@ function App() {
     Player.seekTo(start);
   }
 
-  function handleUpdateTime(state) {
-    if (state == 2) {
-    }
-  }
-
   function handleSubmit() {
     setLoading(true);
     fetch(
-      `http://127.0.0.1:3000/test?start=${start}&end=${end}&id=${Player.playerInfo.videoData.video_id}`
+      `/test?start=${start}&end=${end}&id=${Player.playerInfo.videoData.video_id}`
     )
       .then((response) => {
         return response.blob();
@@ -137,7 +132,6 @@ function App() {
         videoId={url ? extractYouTubeVideoId(url) : "dQw4w9WgXcQ"}
         onStateChange={(e) => {
           setPlayer(e.target);
-          handleUpdateTime(e.data);
         }}
         onReady={(e) => {
           handleReady(e.target);
