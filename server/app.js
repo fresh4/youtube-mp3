@@ -2,9 +2,20 @@ import ytdl from 'ytdl-core'
 import express from 'express'
 import ffmpegPath from 'ffmpeg-static'
 import ffmpeg from 'fluent-ffmpeg'
+import cors from 'cors'
 
 const app = express()
 const port = 3000
+
+app.use(cors({
+  origin: "*"
+}))
+
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.get("/test", (req, res) => {
   // console.log(req.query)
@@ -17,8 +28,8 @@ app.get("/test", (req, res) => {
     var filename = e.videoDetails.title
     filename = filename.replace(/[/\\?%*:|"<>]/g, "");
 
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    // res.header("Access-Control-Allow-Origin", "*");
+    // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.set("Content-Type", "audio/mpeg")
     res.set("Content-Disposition", `inline;filename="${filename}.mp3"`)
 
