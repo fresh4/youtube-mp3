@@ -17,7 +17,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get("/test", (req, res) => {
+app.get("/convert", (req, res) => {
   // console.log(req.query)
   const start = req.query.start;
   const end = req.query.end;
@@ -28,8 +28,6 @@ app.get("/test", (req, res) => {
     var filename = e.videoDetails.title
     filename = filename.replace(/[/\\?%*:|"<>]/g, "");
 
-    // res.header("Access-Control-Allow-Origin", "*");
-    // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.set("Content-Type", "audio/mpeg")
     res.set("Content-Disposition", `inline;filename="${filename}.mp3"`)
 

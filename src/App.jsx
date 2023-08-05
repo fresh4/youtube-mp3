@@ -74,7 +74,7 @@ function App() {
   function handleSubmit() {
     setLoading(true);
     fetch(
-      `/test?start=${start}&end=${end}&id=${Player.playerInfo.videoData.video_id}`
+      `/convert?start=${start}&end=${end}&id=${Player.playerInfo.videoData.video_id}`
     )
       .then((response) => {
         return response.blob();
@@ -85,11 +85,16 @@ function App() {
         const filename = Player.videoTitle.replace(/[/\\?%*:|"<>]/g, "");
         a.style.display = "none";
         a.href = link;
-        // the filename you want
+
         a.download = `${filename}.mp3`;
         document.body.appendChild(a);
         a.click();
         window.URL.revokeObjectURL(link);
+      })
+      .catch((reason) => {
+        console.log(`Error: ${reason}`);
+      })
+      .finally(() => {
         setLoading(false);
       });
   }
