@@ -210,7 +210,11 @@ function App() {
       </div>
       <br />
       <button
-        disabled={loading || parseInt(end) - parseInt(start) > 60}
+        disabled={
+          loading ||
+          parseInt(end) - parseInt(start) > 60 ||
+          parseFloat(end) - parseFloat(start) < 0.5
+        }
         onClick={handleSubmit}
       >
         {loading ? <Spin /> : "Convert to .mp3"}
