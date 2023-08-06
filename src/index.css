@@ -86,12 +86,22 @@ button:focus-visible {
 iframe[src*="youtube"] {
   display: block;
   margin: 0 auto;
-  max-width: 100%;
-  min-width: 100%;
+  width: 1200px;
+  height: 600px;
   padding-bottom: 10px;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 650px) {
+  iframe[src*="youtube"] {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    /* min-width: 100%; */
+    /* height: unset; */
+    max-height: 300px;
+    padding-bottom: 10px;
+  }
+
   .timing-slider .ant-slider-mark-text::after {
     content: "";
   }
