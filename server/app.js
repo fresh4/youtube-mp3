@@ -10,17 +10,6 @@ const port = 3000
 
 app.use('/api', apiRouter)
 
-// app.use(cors({
-//   origin: "*"
-// }))
-
-// app.use(function (req, res, next) {
-//   console.log(req)
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   next();
-// });
-
 apiRouter.get("/convert", (req, res) => {
   // console.log(req.query)
   const start = req.query.start;

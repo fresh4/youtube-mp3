@@ -136,6 +136,7 @@ function App() {
       </Row>
       <hr />
       <YouTubePlayer
+        className="youtube-player"
         videoId={url ? extractYouTubeVideoId(url) : "dQw4w9WgXcQ"}
         onStateChange={(e) => {
           setPlayer(e.target);
@@ -151,6 +152,7 @@ function App() {
         }}
       />
       <Slider
+        className="timing-slider"
         tooltip={{ formatter: secondsToTimecode }}
         range
         max={max}
@@ -159,18 +161,19 @@ function App() {
         value={[start, end]}
         onChange={handleSlider}
         marks={{
-          [time]: `${secondsToTimecode(time).split(".")[0]}\n(Click to trim)`,
+          [time]: `${secondsToTimecode(time).split(".")[0]}`,
         }}
       />
       <div
+        className="timing-container"
         style={{
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
         }}
       >
-        <div>
-          <Row gutter={{ md: 4 }} style={{ justifyContent: "flex-start" }}>
+        <div className="timing-range">
+          <Row gutter={{ md: 4 }}>
             <Col span="8">
               <label>Start</label>
             </Col>
@@ -186,6 +189,7 @@ function App() {
                 title="Start"
                 placeholder="0"
                 type="number"
+                inputMode="decimal"
                 onChange={(e) => handleSlider([e, end])}
                 value={start}
                 style={{ width: "90%" }}
@@ -197,6 +201,7 @@ function App() {
                 addonAfter="s"
                 placeholder={max}
                 type="number"
+                inputMode="decimal"
                 onChange={(e) => handleSlider([start, e])}
                 value={end}
                 style={{ width: "90%" }}
@@ -219,8 +224,11 @@ function App() {
       >
         {loading ? <Spin /> : "Convert to .mp3"}
       </button>
+      <p style={{ margin: 0 }}>
+        <small>(Maximum length is 1 minute)</small>
+      </p>
       <br />
-      <small>(Maximum length is 1 minute)</small>
+      <KofiButton color="#0a9396" title="Support Me <3" kofiID="J3J71G7WM" />
     </>
   );
 }
@@ -229,8 +237,7 @@ function Title() {
   return (
     <>
       <h1>YouTube to Soundbyte</h1>
-      <KofiButton color="#0a9396" title="Donate" kofiID="J3J71G7WM" />
-      <p>
+      <p className="description">
         The YouTube to Soundbyte tool is a tool for generating mp3 soundbytes
         from a given YouTube URL. <br />
         You can trim the video to a range of time using the sliders, or get more

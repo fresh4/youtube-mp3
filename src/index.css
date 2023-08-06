@@ -78,3 +78,53 @@ button:focus-visible {
     color: #213547 !important;
   }
 }
+
+.timing-slider .ant-slider-mark-text::after {
+  content: "(Click to Trim)";
+}
+
+iframe[src*="youtube"] {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  padding-bottom: 10px;
+}
+
+@media (max-width: 480px) {
+  .timing-slider .ant-slider-mark-text::after {
+    content: "";
+  }
+
+  button {
+    width: 100%;
+    height: 4rem;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .description {
+    font-size: 1rem;
+    text-align: justify;
+    /* display: none; */
+  }
+
+  .ant-input {
+    height: 4rem;
+    font-size: 1rem;
+  }
+
+  .ant-input-group-addon .ant-btn {
+    height: 4rem;
+  }
+
+  .timing-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .timing-range .ant-row {
+    justify-content: center;
+  }
+}
