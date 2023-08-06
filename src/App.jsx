@@ -2,6 +2,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import { Slider, InputNumber, Input, Col, Row, Spin } from "antd";
 import YouTubePlayer from "react-youtube";
+import KofiButton from "kofi-button";
 const { Search } = Input;
 
 function App() {
@@ -157,6 +158,9 @@ function App() {
         step={0.05}
         value={[start, end]}
         onChange={handleSlider}
+        marks={{
+          [time]: `${secondsToTimecode(time)}\n(Click to trim)`,
+        }}
       />
       <div
         style={{
@@ -217,6 +221,7 @@ function Title() {
   return (
     <>
       <h1>YouTube to Soundbyte</h1>
+      <KofiButton color="#0a9396" title="Donate" kofiID="J3J71G7WM" />
       <p>
         The YouTube to Soundbyte tool is a tool for generating mp3 soundbytes
         from a given YouTube URL. <br />

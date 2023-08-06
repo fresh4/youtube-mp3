@@ -55,6 +55,12 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.ant-slider-mark-text,
+.ant-input-number-group-addon {
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87) !important;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -65,5 +71,10 @@ button:focus-visible {
   }
   button {
     background-color: #f9f9f9;
+  }
+
+  .ant-slider-mark-text,
+  .ant-input-number-group-addon {
+    color: #213547 !important;
   }
 }
