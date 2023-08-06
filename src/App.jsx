@@ -75,9 +75,10 @@ function App() {
   function handleSubmit() {
     setLoading(true);
     fetch(
-      `/convert?start=${start}&end=${end}&id=${Player.playerInfo.videoData.video_id}`
+      `/api/convert?start=${start}&end=${end}&id=${Player.playerInfo.videoData.video_id}`
     )
       .then((response) => {
+        if (response.status !== 200) throw new Error("Bad Request"); //Bundle actual response from server
         return response.blob();
       })
       .then((blob) => {
@@ -149,7 +150,6 @@ function App() {
           playerVars: options,
         }}
       />
-
       <Slider
         tooltip={{ formatter: secondsToTimecode }}
         range
@@ -159,7 +159,7 @@ function App() {
         value={[start, end]}
         onChange={handleSlider}
         marks={{
-          [time]: `${secondsToTimecode(time)}\n(Click to trim)`,
+          [time]: `${secondsToTimecode(time).split(".")[0]}\n(Click to trim)`,
         }}
       />
       <div
@@ -209,10 +209,14 @@ function App() {
         </div>
       </div>
       <br />
-
-      <button disabled={loading} onClick={handleSubmit}>
+      <button
+        disabled={loading || parseInt(end) - parseInt(start) > 60}
+        onClick={handleSubmit}
+      >
         {loading ? <Spin /> : "Convert to .mp3"}
       </button>
+      <br />
+      <small>(Maximum length is 1 minute)</small>
     </>
   );
 }

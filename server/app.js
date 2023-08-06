@@ -5,23 +5,34 @@ import ffmpeg from 'fluent-ffmpeg'
 import cors from 'cors'
 
 const app = express()
+const apiRouter = express.Router()
 const port = 3000
 
-app.use(cors({
-  origin: "*"
-}))
+app.use('/api', apiRouter)
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+// app.use(cors({
+//   origin: "*"
+// }))
 
-app.get("/convert", (req, res) => {
+// app.use(function (req, res, next) {
+//   console.log(req)
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
+
+apiRouter.get("/convert", (req, res) => {
   // console.log(req.query)
   const start = req.query.start;
   const end = req.query.end;
   const videoId = req.query.id;
+
+  if (end - start > 61) {
+    console.log("too long!")
+    return res.status(400)
+      .send("Selected range cannot be greater than 1 minute.")
+  }
+
   ffmpeg.setFfmpegPath(ffmpegPath)
 
   ytdl.getInfo(`https://www.youtube.com/watch?v=${videoId}`).then(e => {
