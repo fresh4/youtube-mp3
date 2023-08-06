@@ -146,8 +146,8 @@ function App() {
         }}
         onEnd={(e) => e.target.seekTo(start)}
         opts={{
-          width: "1200",
-          height: "640",
+          // width: "1200",
+          // height: "640",
           playerVars: options,
         }}
       />
