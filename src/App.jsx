@@ -135,6 +135,7 @@ function App() {
         />
       </Row>
       <hr />
+      {!Player.getPlayerState && <Spin size="large" />}
       <YouTubePlayer
         className="youtube-player"
         videoId={url ? extractYouTubeVideoId(url) : "dQw4w9WgXcQ"}
