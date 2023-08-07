@@ -1,8 +1,10 @@
 # YouTube to Discord Soundboard File
 
+[The official hosted version of the app can be found here](https://youtube-soundbyte.com)
+
 This application is a simple tool that allows you to take a YouTube video, trim it, and download the trimmed audio file.
 
-It is written using React + Express with Vite.
+It is written using React + Vite for front end + Express for file processing on the backend server.
 
 The backend server is under `server/app.js` and uses the `nodemon` npm package to run it with hot reloading.
 
