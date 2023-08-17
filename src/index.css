@@ -61,6 +61,20 @@ button:focus-visible {
   color: rgba(255, 255, 255, 0.87) !important;
 }
 
+.gh-logo {
+  background-size: 100% 100%;
+  display: block;
+  min-height: 3rem;
+  min-width: 3.1rem;
+  background-image: url("./assets/github-mark-white.svg");
+  opacity: 0.6;
+  transition-duration: 0.4s;
+}
+
+.gh-logo:hover {
+  opacity: 1;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -76,6 +90,10 @@ button:focus-visible {
   .ant-slider-mark-text,
   .ant-input-number-group-addon {
     color: #213547 !important;
+  }
+
+  .gh-logo {
+    background-image: url("./assets/github-mark.svg");
   }
 }
 

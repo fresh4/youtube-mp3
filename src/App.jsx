@@ -229,8 +229,30 @@ function App() {
         <small>(Maximum length is 1 minute)</small>
       </p>
       <br />
-      <KofiButton color="#0a9396" title="Support Me <3" kofiID="J3J71G7WM" />
+      <hr />
+      <Footer />
     </>
+  );
+}
+
+function Footer() {
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+      }}
+    >
+      <KofiButton color="#0a9396" title="Support Me <3" kofiID="J3J71G7WM" />
+      <small>
+        <a
+          className="gh-logo"
+          href="https://github.com/fresh4/youtube-mp3"
+          target="_blank"
+        />
+      </small>
+    </div>
   );
 }
 
