@@ -1,8 +1,7 @@
-import ytdl from 'ytdl-core'
+import ytdl from '@distube/ytdl-core'
 import express from 'express'
 import ffmpegPath from 'ffmpeg-static'
 import ffmpeg from 'fluent-ffmpeg'
-import cors from 'cors'
 
 const app = express()
 const apiRouter = express.Router()
