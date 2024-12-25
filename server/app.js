@@ -23,7 +23,7 @@ apiRouter.get("/convert", (req, res) => {
 
   ffmpeg.setFfmpegPath(ffmpegPath)
 
-  ytdl.getInfo(`https://www.youtube.com/watch?v=${videoId}`).then(e => {
+  ytdl.getInfo(`https://www.youtube.com/watch?v=${videoId}`, { playerClients: ["IOS", "WEB_CREATOR"] }).then(e => {
     var filename = e.videoDetails.title
     filename = filename.replace(/[/\\?%*:|"<>]/g, "");
 
