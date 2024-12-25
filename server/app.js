@@ -14,6 +14,7 @@ apiRouter.get("/convert", (req, res) => {
   const start = req.query.start;
   const end = req.query.end;
   const videoId = req.query.id;
+  const agent = ytdl.createProxyAgent({ uri: "http://152.26.229.42:9443" });
 
   if (end - start > 61) {
     console.log("too long!")
@@ -23,7 +24,7 @@ apiRouter.get("/convert", (req, res) => {
 
   ffmpeg.setFfmpegPath(ffmpegPath)
 
-  ytdl.getInfo(`https://www.youtube.com/watch?v=${videoId}`, { playerClients: ["IOS", "WEB_CREATOR"] }).then(e => {
+  ytdl.getInfo(`https://www.youtube.com/watch?v=${videoId}`, { agent: agent, playerClients: ["IOS", "WEB_CREATOR"] }).then(e => {
     var filename = e.videoDetails.title
     filename = filename.replace(/[/\\?%*:|"<>]/g, "");
 
