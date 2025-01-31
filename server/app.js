@@ -2,6 +2,7 @@ import ytdl from '@distube/ytdl-core'
 import express from 'express'
 import ffmpegPath from 'ffmpeg-static'
 import ffmpeg from 'fluent-ffmpeg'
+import * as fs from 'fs';
 
 const app = express()
 const apiRouter = express.Router()
@@ -14,7 +15,7 @@ apiRouter.get("/convert", (req, res) => {
   const start = req.query.start;
   const end = req.query.end;
   const videoId = req.query.id;
-  const agent = ytdl.createProxyAgent({ uri: "http://152.26.229.42:9443" });
+  const agent = ytdl.createAgent(JSON.parse(fs.readFileSync("cookies.json")));
 
   if (end - start > 61) {
     console.log("too long!")
