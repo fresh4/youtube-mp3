@@ -27,7 +27,7 @@ def convert_video_to_mp3_clip():
         '--format', 'bestaudio',
         '--extract-audio',
         '--download-sections', f"*{start}-{end}",
-        '--cookie', 'cookie.txt'
+        '--cookies', 'cookies.txt'
         '-o', '-',
         url
     ], stdout=sp.PIPE)
