@@ -1,6 +1,7 @@
+/* eslint-disable react/no-unescaped-entities */
 import "./App.css";
 import { useState, useEffect } from "react";
-import { Slider, InputNumber, Input, Col, Row, Spin } from "antd";
+import { Slider, InputNumber, Input, Col, Row, Spin, Alert } from "antd";
 import YouTubePlayer from "react-youtube";
 import KofiButton from "kofi-button";
 const { Search } = Input;
@@ -249,7 +250,7 @@ function Footer() {
         <a
           className="gh-logo"
           href="https://github.com/fresh4/youtube-mp3"
-          target="_blank"
+          target="_blank" rel="noreferrer"
         />
       </small>
     </div>
@@ -260,6 +261,15 @@ function Title() {
   return (
     <>
       <h1>YouTube to Soundbyte</h1>
+      <Alert 
+        type="error" 
+        showIcon
+        message="Please Read"
+        description="As of 2024, this application no longer works due to YouTube strictly rejecting API requests from bots and cloud provider IP addresses. 
+        If you would like to still use it and kind of know how to use NodeJS, the Github page linked at the bottom of the page has instructions on how to run this application locally, 
+        as that will bypass the IP block restriction on the hosted version."
+        closable
+      />
       <p className="description">
         The YouTube to Soundbyte tool is a tool for generating mp3 soundbytes
         from a given YouTube URL. <br />
